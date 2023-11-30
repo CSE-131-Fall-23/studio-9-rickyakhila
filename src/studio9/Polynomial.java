@@ -3,49 +3,70 @@ package studio9;
 import java.util.LinkedList;
 
 public class Polynomial {
-	
-	private LinkedList<Double> list;
 
+	private LinkedList<Double> list;
+	//private LinkedList<Double> derivative;
 	/**
 	 * Constructs a Polynomial with no terms yet.
 	 */
 	public Polynomial() {
-		//FIXME
+		list = new LinkedList<Double>();
+		//derivative = new LinkedList<Double>();
 	}
-
-	
 	/**
 	 * 
 	 * @param coeff
 	 * @return polynomial with added term
 	 */
 	public void addTerm(double coeff) {
-		//FIXME
+		list.add(coeff);
 	}
-	
 	/*
 	 * Returns a String of the polynomial with the proper form:
 	 * 
 	 * Cx^N + Cx^N-1 + ... + Cx + C
 	 */
 	public String toString() {
-		return ""; //FIXME
+		int n = list.size();
+		String term = "";
+		for(int i = 0; i<n; i++) {
+			double m = list.get(i);
+			if (n-i-1==0) {
+				term = m + "";
+			}
+			term = term + m + "x^" + (n-i-1);
+		}
+		return term;
 	}
-	
 	/**
 	 * 
 	 * @param x
 	 * @return value of polynomial at that x
 	 */
 	public double evaluate(double x) {
-		return 0;//FIXME
+		int n = list.size();
+		double result = 0;
+		for(int i = 0; i<n; i++) {
+			double m = list.get(i);
+			double power = n-i-1;
+			result = result + m*(Math.pow(x,power));
+		}
+		return result;
 	}
 
-	
+
 	public Polynomial derivative() {
-		return null;//FIXME
+		Polynomial derivative = new Polynomial();
+		int n = list.size();
+		for(int i = 0; i<n; i++) {
+			double m = list.get(i);
+			double power = n-i-1;
+			double newcoe = m*power;
+			derivative.addTerm(newcoe);
+		}
+		return derivative;
 	}
-	
+
 
 	/**
 	 * This is the "equals" method that is called by

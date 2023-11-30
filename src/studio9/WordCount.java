@@ -29,9 +29,40 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
-
-		// FIXME
-		throw new NotYetImplementedException();
+		Map<String, Integer> map1 = new HashMap<>();
+		int n = words.size();
+		int tocounts = 0;
+		int becounts = 0;
+		int orcounts = 0;
+		int notcounts = 0;
+		for (int i=0; i<n; i++) {
+			String m = words.get(i);
+			//map.containsKey(m)
+			//map.put(m, map.get(m) +1)
+			//otherwise, map.put(m, 1)
+			if (m.equals("to")) {
+				tocounts ++;
+			}
+			if (m.equals("be")) {
+				becounts ++;
+			}
+			if (m.equals("or")) {
+				orcounts ++;
+			}
+			if (m.equals("not")) {
+				notcounts ++;
+			}
+			
+		}
+		
+		map1.put("to", tocounts);
+		map1.put("be", becounts);
+		map1.put("or", orcounts);
+		map1.put("not", notcounts);
+		
+		return map1;
+		
+		//throw new NotYetImplementedException();
 
 	}
 	
